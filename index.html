@@ -19,12 +19,20 @@
       <h1>Sherlock Characters</h1>
     </header>
     <main>
+      <p id="instructions">
+        Pick a field from the dropdown and click Sort By to reorder the cards.
+        Click any card to remove it. Refresh the page to bring them all back.
+      </p>
       <form id="sortForm">
-        <select id="sortField"></select>
+        <label for="sortField">Sort by</label>
+        <select id="sortField" name="sortField"></select>
         <button type="submit">Sort By</button>
       </form>
       <p id="currentSort">List of characters in default order</p>
       <section class="cards"></section>
     </main>
+    <footer>
+      <p>Sherlock character data for MAD9014</p>
+    </footer>
   </body>
 </html>

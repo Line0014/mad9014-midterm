@@ -4,8 +4,13 @@
   --color-header: hsl(210 45% 28%);
   --color-header-text: hsl(0 0% 100%);
   --color-accent: hsl(12 70% 50%);
+  --color-accent-dark: hsl(12 70% 42%);
   --color-text: hsl(215 25% 20%);
   --color-muted: hsl(215 15% 45%);
+  --color-info-text: hsl(215 30% 12%);
+  --color-divider: hsl(215 15% 90%);
+  --color-shadow: hsl(0 0% 0% / 0.1);
+  --color-shadow-hover: hsl(0 0% 0% / 0.25);
 
   --font-stack: "Montserrat", sans-serif;
 
@@ -44,6 +49,7 @@ header h1 {
   font-size: var(--font-xl);
   font-weight: 700;
   letter-spacing: 0.04em;
+  line-height: 1.2;
 }
 
 main {
@@ -52,12 +58,23 @@ main {
   padding: calc(var(--space) * 2) var(--space);
 }
 
+#instructions {
+  font-size: var(--font-xs);
+  color: var(--color-muted);
+  margin: 0 0 var(--space);
+}
+
 #sortForm {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space);
   align-items: center;
   margin-bottom: var(--space);
+}
+
+#sortForm label {
+  font-size: var(--font-sm);
+  font-weight: 500;
 }
 
 #sortField {
@@ -83,7 +100,7 @@ main {
 }
 
 #sortForm button:hover {
-  filter: brightness(0.92);
+  background-color: var(--color-accent-dark);
 }
 
 #currentSort {
@@ -95,7 +112,7 @@ main {
 .cards {
   display: grid;
   gap: var(--space);
-  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
 }
 
 .card {
@@ -104,36 +121,61 @@ main {
   background-color: var(--color-surface);
   border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: 0 2px 6px hsl(0 0% 0% / 0.1);
+  box-shadow: 0 2px 6px var(--color-shadow);
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 0 6px 14px var(--color-shadow-hover);
 }
 
 .card__title {
   margin: 0;
   padding: var(--space);
+  height: 5.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   font-size: var(--font-md);
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.2;
+  letter-spacing: 0.02em;
   background-color: var(--color-header);
   color: var(--color-header-text);
-  cursor: pointer;
 }
 
 .card__image {
   display: block;
   width: 100%;
   height: 280px;
-  max-height: 280px;
   object-fit: cover;
   object-position: center top;
 }
 
 .card__info {
   margin: 0;
-  padding: 0.5rem var(--space);
+  padding: 0.6rem var(--space);
   font-size: var(--font-xs);
-  color: var(--color-text);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: var(--color-info-text);
+  border-bottom: 1px solid var(--color-divider);
 }
 
 .card__info:last-child {
   padding-bottom: var(--space);
+  border-bottom: none;
+}
+
+.card__info--highlight {
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+footer {
+  padding: var(--space);
+  text-align: center;
+  font-size: var(--font-xs);
+  color: var(--color-muted);
 }
