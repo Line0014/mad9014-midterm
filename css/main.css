@@ -1,164 +1,139 @@
-@layer base, layout, products;
+:root {
+  --color-bg: hsl(210 30% 96%);
+  --color-surface: hsl(0 0% 100%);
+  --color-header: hsl(210 45% 28%);
+  --color-header-text: hsl(0 0% 100%);
+  --color-accent: hsl(12 70% 50%);
+  --color-text: hsl(215 25% 20%);
+  --color-muted: hsl(215 15% 45%);
 
-@layer base {
-  :root {
-    --img: url('../img/avatar1.png');
-    --card-size: minmax(240px, 1fr);
+  --font-stack: "Montserrat", sans-serif;
 
-    --primary: hsl(340 50% 40% / 1);
-  }
-  *,
-  *::before,
-  ::after {
-    box-sizing: border-box;
-  }
-  html {
-    font-family:
-      system-ui,
-      -apple-system,
-      BlinkMacSystemFont,
-      'Segoe UI',
-      Roboto,
-      Oxygen,
-      Ubuntu,
-      Cantarell,
-      'Open Sans',
-      'Helvetica Neue',
-      sans-serif;
-    font-weight: 300;
-    font-size: 1rem;
-    margin: 0;
-    padding: 0;
-  }
-  body {
-    margin: 0;
-    padding: 0;
-  }
-  h1,
-  h2,
-  h3 {
-    margin: 0;
-  }
+  --font-xl: clamp(2rem, 5vw, 3.5rem);
+  --font-lg: clamp(1.5rem, 3.5vw, 2.25rem);
+  --font-md: clamp(1.15rem, 2.5vw, 1.5rem);
+  --font-sm: clamp(1rem, 2vw, 1.15rem);
+  --font-xs: clamp(0.85rem, 1.5vw, 0.95rem);
+
+  --radius: 0.5rem;
+  --space: 1rem;
 }
 
-@layer layout {
-  .container {
-    display: grid;
-    gap: 1rem;
-    grid-template-areas:
-      'head head'
-      'nav main'
-      'foot foot';
-    grid-template-columns: 20vw 1fr; /* two columns */
-    grid-template-rows: 20vh 1fr 10vh; /* three rows */
-  }
-
-  header {
-    grid-area: head;
-    background-image: var(--img);
-    background-repeat: no-repeat;
-    background-size: 27%; /* of header width */
-    background-origin: center center; /* hor vert */
-    background-position: 5vw center; /* point in image as relative for moving */
-
-    background-color: hsl(200, 30%, 70%);
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    & > h1 {
-      font-size: 6rem;
-
-      letter-spacing: 6px;
-      font-weight: 300;
-      color: var(--primary);
-    }
-  }
-  nav {
-    grid-area: nav;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    justify-content: flex-start;
-    align-items: center;
-    & > a {
-      font-size: 1.5rem;
-    }
-  }
-  main {
-    grid-area: main;
-  }
-  footer {
-    grid-area: foot;
-    padding: 1rem 2rem;
-    background-color: hsl(200, 30%, 70%);
-  }
+* {
+  box-sizing: border-box;
 }
 
-@layer products {
-  .products {
-    display: grid;
-    margin-inline-end: 2rem;
-    gap: 1rem;
-    /* grid-template-columns: var(--card-size) var(--card-size) var(--card-size); */
-    grid-template-columns: repeat(3, var(--card-size));
-    /* grid-template-rows: repeat(4, 300px); */
-    grid-auto-rows: minmax(300px, auto);
-    /* 400px is now the min height for EVERY row */
-  }
-  .product {
-    /* border: 1px solid #333; */
-    box-shadow: 0px 0px 4px #777;
-    border-top-right-radius: 1rem;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    & > .product__title {
-      background-color: #333;
-      color: #fff;
-      padding: 1rem;
-      font-size: 2rem;
-    }
-    & > .product__desc {
-      padding-inline: 1rem;
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 3;
-      font-size: 1.5rem;
-    }
-    & > .product__action {
-      border: none;
-      padding: 0.25rem 2rem;
-      margin: 1rem;
-      font-size: 2rem;
-      background-color: var(--primary);
-      color: white;
-    }
-    & > .product__price {
-      padding: 1rem;
-      font-size: 2rem;
-      font-weight: 500;
-      text-align: end;
-      background-color: var(--primary);
-      color: white;
-      margin-block-end: 0;
-    }
-  }
+body {
+  margin: 0;
+  font-family: var(--font-stack);
+  font-size: var(--font-sm);
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-bg);
 }
 
-/*
- @media screen and (width < 800px) {
-    .container {
-     
-      grid-template-areas:
-        'head head'
-        'main nav'
-        'main foot';
-      grid-template-columns: 1fr 20vw; 
-      grid-template-rows: 20vh 30vh 1fr; 
-    }
-  }
-*/
+header {
+  background-color: var(--color-header);
+  color: var(--color-header-text);
+  padding: calc(var(--space) * 2) var(--space);
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: var(--font-xl);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: calc(var(--space) * 2) var(--space);
+}
+
+#sortForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space);
+  align-items: center;
+  margin-bottom: var(--space);
+}
+
+#sortField {
+  font-family: var(--font-stack);
+  font-size: var(--font-sm);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-muted);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+#sortForm button {
+  font-family: var(--font-stack);
+  font-size: var(--font-sm);
+  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: var(--radius);
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+  cursor: pointer;
+}
+
+#sortForm button:hover {
+  filter: brightness(0.92);
+}
+
+#currentSort {
+  font-size: var(--font-xs);
+  color: var(--color-muted);
+  margin-bottom: calc(var(--space) * 1.5);
+}
+
+.cards {
+  display: grid;
+  gap: var(--space);
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 2px 6px hsl(0 0% 0% / 0.1);
+}
+
+.card__title {
+  margin: 0;
+  padding: var(--space);
+  font-size: var(--font-md);
+  font-weight: 500;
+  line-height: 1.2;
+  background-color: var(--color-header);
+  color: var(--color-header-text);
+  cursor: pointer;
+}
+
+.card__image {
+  display: block;
+  width: 100%;
+  height: 280px;
+  max-height: 280px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.card__info {
+  margin: 0;
+  padding: 0.5rem var(--space);
+  font-size: var(--font-xs);
+  color: var(--color-text);
+}
+
+.card__info:last-child {
+  padding-bottom: var(--space);
+}

@@ -1,4 +1,5 @@
 const info = {
+  last_updated: "2026-10-23",
   results: [
     {
       id: "charles",
